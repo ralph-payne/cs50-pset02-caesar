@@ -6,10 +6,10 @@
 # cd to project folder
 
 # Compile program
-gcc caesar.c -o mario
+gcc caesar.c -o caesar
 
 # Run program
-./mario
+./caesar
 ```
 
 [Source for pset](https://lab.cs50.io/cs50/labs/2019/x/caesar/)
