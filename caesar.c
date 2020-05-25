@@ -1,20 +1,21 @@
-#include <cs50.h>
-#include <cs50.c>
+// 1. Prompt user to input a key (an int) as argv[1]
+// 2. Prompt user for plaintext
+// 3. Program converts plaintext to cipher using converted argv[1]
+
+// #include <cs50.h>
+// #include <cs50.c>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 // Declare function prototype
 void caesar(int ninit);
 
 int main(int argc, char *argv[])
 {
-
-    // Convert string to long with strtol. Assign this value to the key
-    // string to long(string, endpointer, base [10 is decimal base system])
-    long key = strtol(argv[1], NULL, 10);
     
     // If argc is not equal to 2 or the strtol converts the key and returns 0
-    if (argc != 2 || key == 0)
+    if (argc != 2)
     {
         // %li is placeholder for a long integer
         puts("./caesar key");
@@ -26,9 +27,24 @@ int main(int argc, char *argv[])
     // This code will only run if argc == 2
     else
     {
-        caesar(key);
+        // Convert string to long with strtol
+	// Assign this value to the key
+        // str to long(string, endpointer, base 
+	// 10 is decimal base system
+        long key = strtol(argv[1], NULL, 10);
+	    if (key != 0)
+	    {
+            caesar(key);
+	    }
+        else
+        {
+            puts("./caesar key");
+            {
+                // Exit program if key is not a number
+                exit(0);
+            }
+        }
     }
-    
 }
     
 // n is equal to the key
@@ -45,7 +61,7 @@ void caesar(int ninit)
     char s[100];
     
     // Prompt User for input
-    printf("plaintext: ");    
+    printf("plaintext:  ");    
     fgets(s, sizeof(s), stdin);
 
     // Declare length of string to give count for loop
@@ -86,10 +102,9 @@ void caesar(int ninit)
         {
             printf("%c", s[i]);
         }
-        // Skip if char is not a letter or a space
         else
         {
-            printf("");
+            // Skip if char is not a letter or a space
         }
     }
     // After printing the result of the loop (i.e. the ciphertext), print a newline
